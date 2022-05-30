@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.akagami.micro.domain.User;
+import com.akagami.micro.domain.UserTemplate;
 import com.akagami.micro.repositories.UserRepository;
 
 @RestController
@@ -19,8 +19,8 @@ public class UserController {
 	@Autowired
 	private UserRepository repo;
 	@PostMapping("/save")
-	public ResponseEntity<?> addUser(@RequestBody User user){
-		User savedUser = this.repo.save(user);
+	public ResponseEntity<?> addUser(@RequestBody UserTemplate user){
+		UserTemplate savedUser = this.repo.save(user);
 		return ResponseEntity.ok(savedUser);
 	}
 	@GetMapping("/")
@@ -28,13 +28,13 @@ public class UserController {
 		return ResponseEntity.ok(this.repo.findAll());
 	}
 	@PostMapping("/findByCity")
-	public ResponseEntity<?> getUsersOfCity(@RequestBody User user){
-		List<User> usersOfCity = this.repo.findByCity(user.getCity());
+	public ResponseEntity<?> getUsersOfCity(@RequestBody UserTemplate user){
+		List<UserTemplate> usersOfCity = this.repo.findByCity(user.getCity());
 		return ResponseEntity.ok(usersOfCity);
 	}
 	@PostMapping("/findByCollegeAndCity")
-	public ResponseEntity<?> getUsersOfCollege(@RequestBody User user){
-		List<User> usersOfCity = this.repo.findUsingCityAndCollege(user.getCity(), user.getCollege());
+	public ResponseEntity<?> getUsersOfCollege(@RequestBody UserTemplate user){
+		List<UserTemplate> usersOfCity = this.repo.findUsingCityAndCollege(user.getCity(), user.getCollege());
 		return ResponseEntity.ok(usersOfCity);
 	}
 }

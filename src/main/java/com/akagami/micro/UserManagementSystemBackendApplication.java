@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.akagami.micro.domain.User;
+import com.akagami.micro.domain.UserTemplate;
 
 @SpringBootApplication
 @ComponentScan
